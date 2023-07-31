@@ -17,3 +17,7 @@ Resources to information, troubleshooting issues and the like
 - [MicroPython for Kids](https://www.coderdojotc.org/micropython/)
   - Don't be put off by it being for kids.  If you are just starting out with the Pico, it is a good resource.
 - [Raspberry Pi Pico W Firmware](https://micropython.org/download/rp2-pico-w/)
+- [rshell](https://github.com/dhylands/rshell)
+  - Hasn't been updated in a long time, but still very useful
+- [pico-w-go](https://github.com/paulober/Pico-W-Go)
+  - If you prefer to write micropython in VS Code, this extension for the Raspberry Pi Pico is awesome
