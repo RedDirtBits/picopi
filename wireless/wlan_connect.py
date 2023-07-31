@@ -34,6 +34,9 @@ def wireless_connect():
     # activate wireless
     wlan.active(True)
 
+    # set the hostname for the device
+    network.hostname("PicoW-A")
+
     # connect to wireless pulling SSID and Password from credentials file
     wlan.connect(logins.WANSSID, logins.WANPASSWD)
 
