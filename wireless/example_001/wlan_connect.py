@@ -56,6 +56,13 @@ def wireless_connect():
     while max_wait > 0:
 
         # a status of 3 means connected
+        # 0: Link Down
+        # 1: Link Join
+        # 2: Link No Ip Address
+        # 3: Link Up
+        # -1: Link Fail
+        # -2: Link No Network
+        # -3: Link Bad Authentication
         if wlan.status() < 0 or wlan.status() >= 3:
             break
         
