@@ -5,6 +5,11 @@ from utime import sleep, ticks_ms, ticks_diff
 # You don't want to share your home wireless credentials, so store them
 # in a separate file and exclude them from the repository.  We can then
 # import that file and access the variables holding the credentials
+#
+# The syntax could be WLAN1="my_ssid", WLAN1PASSWD="my_password".  You
+# could even go so far as to use a python dictionary, etc.  I have a few
+# different wireless networks in my home so I put the required info in the
+# logins file and switch between them as needed.
 import logins
 
 # ticks_ms and ticks_diff are not strictly necessary but it makes for
@@ -17,6 +22,14 @@ import logins
 from utime import sleep, ticks_ms, ticks_diff
 
 def wireless_connect():
+    """
+    wireless_connect : Connect to a wireless network.  When connected provide
+    a visual indication via the onboard LED and provide via stdout how long
+    it took to connect and the IP address provided (DHCP)
+
+    Raises:
+        RuntimeError: Raise a runtime error if connection is unsuccessful
+    """
 
     # start the timer that will measure how long it takes to connect to WiFi
     start = ticks_ms()
@@ -45,14 +58,19 @@ def wireless_connect():
         # a status of 3 means connected
         if wlan.status() < 0 or wlan.status() >= 3:
             break
-
+        
+        # decrement the max_wait variable if no connection
         max_wait -= 1
+
         print("Waiting for wireless connection...")
         sleep(1)
 
+    # unable to successfully connect to wireless
     if wlan.status() != 3:
         indicator.wireless_connection_failed(3, 1000)
         raise RuntimeError("Wireless network connection failed")
+    
+    # successfully connected
     else:
         status = wlan.ifconfig()
         print(f"Wireless connected.  IP address: {status[0]}")
