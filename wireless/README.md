@@ -7,3 +7,6 @@ My aim is simply to provide some examples that are as stand-alone as I can make 
 I have tried to comment the code as best I can, but I tend to be a bit verbose as I tend to envision someone just starting out and looking to get a working example going that they can use to learn from.
 
 Just remember, I am learning here also.
+
+**example_001**:
+Certainly not as basic as you get when it comes to setting up a wireless connection, but not terribly far off and could certainly be done in far fewer lines of code.  This example shows how to connect to WiFi the Pico W but adds in a few other bits of information along with using the onboard LED for an external visual indicator of connection status.  The LED will flast at one second intervals three times on a failed connection and will flash quickly 10 times at 150 millisecond intervals upon a successful wireless connection.
