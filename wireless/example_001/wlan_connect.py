@@ -63,6 +63,11 @@ def wireless_connect():
         max_wait -= 1
 
         print("Waiting for wireless connection...")
+
+        # sleep for one second
+        # another option here is to put the board in idle mode while waiting
+        # for the connection to be established with machine.idle().  Every little
+        # bit helps when running on battery.  Save the power where you can.
         sleep(1)
 
     # unable to successfully connect to wireless
@@ -73,7 +78,20 @@ def wireless_connect():
     # successfully connected
     else:
         status = wlan.ifconfig()
+
+        # wlan.config() will return a tuple of 4 values:
+        # - IP Address
+        # - Subnet Mask
+        # - Gateway IP Address (Likely your router)
+        # - DNS Server (Likely your router but can be a dedicated server depending on your network)
         print(f"Wireless connected.  IP address: {status[0]}")
+
+        # Not critical for wireless connections, but certainly can be interesting to see how long
+        # or how fast wireless establishes a connection.  Time is in milliseconds
         print(f"Connected in: {ticks_diff(ticks_ms(), start)}ms")
+
+        # add a visual indicator of wireless status via the onboard LED
+        # call the function from indicator.py and pass in the number of times to flash the LED
+        # and the duty cycle or time on/off in milliseconds
         indicator.wireless_connected(10, 150)
         
