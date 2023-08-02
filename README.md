@@ -81,6 +81,7 @@ Resources to information, troubleshooting issues and the like
 - [Raspberry Pi Pico W Firmware](https://micropython.org/download/rp2-pico-w/)
 - [Raspberry Pi Pico Documentation](https://www.raspberrypi.com/documentation/microcontrollers/raspberry-pi-pico.html)
 - [Raspberry Pi Pico Pinout](https://datasheets.raspberrypi.com/picow/PicoW-A4-Pinout.pdf)
+- [Connecting To The Internet With Pico](https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf)
 - [rshell](https://github.com/dhylands/rshell)
   - Hasn't been updated in a long time, but still very useful
 - [pico-w-go](https://github.com/paulober/Pico-W-Go)
