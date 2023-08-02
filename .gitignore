@@ -6,6 +6,7 @@ logins.py
 settings.json
 extensions.json
 .picowgo
+.micropico
 .vscode
 
 ### Python ###
