@@ -1,0 +1,5 @@
+# Sensor Library
+
+A set of sensor libraries/drivers that I have curated over time from various GitHub repo's or other sources, but generally GitHub.  Be warned, however, I have not tested all of these with the Pico.  My aim is to, as time and supplies allow, to test the drivers against the Pico and weed out those that do not so that what you find here you can reasonbly expect to work.
+
+I much prefer to use more _stand-alone_ type setups where all I need is Micropython and the sensor driver.  However, there [Adafruit](https://www.adafruit.com) has made things about as simple as they can get with [CircuitPython](https://circuitpython.org).  It works on a vast number of microcontroller boards and they have a rich assortment of sensor drivers.  Some of which are particularly difficult to find in a stand-alone form if you are working with pure Micropython.  Short of [writing the driver yourself](https://www.digikey.fi/fi/maker/projects/porting-an-arduino-library-to-circuitpython-vl6180x-distance-sensor/b447ac46dced47d6a94c811725f28b1b) CircuitPython is a great way to get started.
