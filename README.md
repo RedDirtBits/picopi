@@ -71,6 +71,29 @@ Use Control-D (or the exit command) to exit rshell.
 
 You can find more information by vising the Github link in the _Resource Links_ below.
 
+## esptool
+
+I use [esptool](https://github.com/espressif/esptool/) primarily to erase and flash ESP32 devices.  It can easily be installed with the command `pip3 install esptool`.  Microcontrollers such as the Pico use `/dev/ttyACM0` serial port.  Others such as the [TinyPico](https://www.tinypico.com/) use `/dev/ttyUSB0`.  Be sure when running the _erase_ and _flash_ commands you are targetting the correct serial port.
+
+For the Raspberry Pi Pico, it doesn't find much use withe UF2 bootloader.  For most other ESP32 based boards it is quite handy.
+
+To erase the flash:
+
+```bash
+esptool.py --chip esp32 --port /dev/ttyUSB0 erase_flash
+```
+
+The `--chip` flag needs to be correct as well.  For example, if you are using a microcontroller with the ESP32-C3 chip then change the flag to `--chip esp32c3`.
+
+To write micropython to the microcontroller you need to first download the correct micropython firmware for your particular device such as the [TinyPico](https://www.tinypico.com/).  Once you have that you can flash it to the board with:
+
+```bash
+esptool.py --chip esp32 --port /dev/ttyUSB0 --baud 460800 write_flash -z 0x1000 tinypico-20230426-v1.20.0.bin
+```
+
+## MicroPico (a.k.a pico-w-go)
+
+I truly wish there were some kind of extension like MicroPico for ESP32 based boards.  It's lightweight, has a functional intellisense, you can access the REPL and more.  There is a link to the GitHub for MicroPico in the Resource Links below.
 
 # Resource Links
 
