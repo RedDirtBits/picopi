@@ -25,7 +25,7 @@ sudo pip3 install rshell
 You will also need add yourself (user) to the _dialout_ group:
 
 ```bash
-sudo usermod -aG $(whoami)
+sudo usermod -aG dialout $(whoami)
 ```
 
 You will need to logout and back in or reboot in order for the change to take effect.  Once you have rshell installed you simply plugin your microcontroller into your USB port, open a command prompt and type the command `rshell`.  You _should_ see output similar to that below:
@@ -44,7 +44,13 @@ Welcome to rshell. Use Control-D (or the exit command) to exit rshell.
 /home/reddirt>
 ```
 
-When you run rshell you will be at a command prompt from which you can access the micropython REPL by simply running the command `repl`.  The down side appears to be that even if you use `Control-D`, `exit` or `exit()` it does not release you from the REPL and the only effective way I have found to get back to the rshell command prompt is to unplug the microcontroller, plug it back in and start over.  The good news is that you don't actually have to be at the rshell command prompt to run commands on the board.  For example, in the output above you can see a file named `secrets.py` that was used for testing.  It can be removed using the rshell utility without entering the rshell command prompt:
+If _rshell_ does not automatically connect, then you will have to provide the serial port the microcontroller is using:
+
+```bash
+rshell -p /dev/ttyACM0
+```
+ 
+When you run rshell you will be at a command prompt from which you can access the micropython REPL by simply running the command `repl`.  To exit the REPL you simply use CTRL + X.  That will put you back to the rshell command prompt.  The good news is that you don't actually have to be at the rshell command prompt to run commands on the board.  For example, in the output above you can see a file named `secrets.py` that was used for testing.  It can be removed using the rshell utility without entering the rshell command prompt:
 
 ```bash
 rshell rm /pyboard/secrets.py
@@ -80,7 +86,7 @@ For the Raspberry Pi Pico, it doesn't find much use withe UF2 bootloader.  For m
 To erase the flash:
 
 ```bash
-esptool.py --chip esp32 --port /dev/ttyUSB0 erase_flash
+esptool --chip esp32 --port /dev/ttyUSB0 erase_flash
 ```
 
 The `--chip` flag needs to be correct as well.  For example, if you are using a microcontroller with the ESP32-C3 chip then change the flag to `--chip esp32c3`.
@@ -88,7 +94,7 @@ The `--chip` flag needs to be correct as well.  For example, if you are using a 
 To write micropython to the microcontroller you need to first download the correct micropython firmware for your particular device such as the [TinyPico](https://www.tinypico.com/).  Once you have that you can flash it to the board with:
 
 ```bash
-esptool.py --chip esp32 --port /dev/ttyUSB0 --baud 460800 write_flash -z 0x1000 tinypico-20230426-v1.20.0.bin
+esptool --chip esp32 --port /dev/ttyUSB0 --baud 460800 write_flash -z 0x1000 tinypico-20230426-v1.20.0.bin
 ```
 
 ## MicroPico (a.k.a pico-w-go)
